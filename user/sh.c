@@ -76,7 +76,14 @@ runcmd(struct cmd *cmd)
     ecmd = (struct execcmd*)cmd;
     if(ecmd->argv[0] == 0)
       exit(1);
+    if (ecmd->argv[0][0] == '!') {
+          printf("here");
+           ecmd->argv[0] = "bang"; // Replace command with "bang"
+           exec(ecmd -> argv[0], ecmd->argv);
+       }
+    else{
     exec(ecmd->argv[0], ecmd->argv);
+    }
     fprintf(2, "exec %s failed\n", ecmd->argv[0]);
     break;
 
