@@ -17,9 +17,9 @@ main()
     printf("\n");
     printf("xv6 kernel is booting\n");
     printf("\n");
-    custom_log_write(LOG_LEVEL_INFO, "Welcome to AUT MCS Principles of Operating Systems Course. This message is from a custom logger implemented by 40113410 and 40111212");
-    custom_log_write(LOG_LEVEL_WARN, "This is a test warning message for the custom logger");
-    custom_log_write(LOG_LEVEL_ERR, "This is a test error message for the custom logger");
+    // custom_log_write(LOG_LEVEL_INFO, "Welcome to AUT MCS Principles of Operating Systems Course. This message is from a custom logger implemented by 40113410 and 40111212");
+    // custom_log_write(LOG_LEVEL_WARN, "This is a test warning message for the custom logger");
+    // custom_log_write(LOG_LEVEL_ERR, "This is a test error message for the custom logger");
     kinit();         // physical page allocator
     kvminit();       // create kernel page table
     kvminithart();   // turn on paging
