@@ -5,14 +5,16 @@
 #define MAX_LEN 512
 #define BLUE "\033[34m"
 #define RESET "\033[0m"
+
 int main(int argc, char *argv[]) {
     char buffer[MAX_LEN + 1];
     int i, len = 0;
 
+    // Build the full message from argv
     for (i = 1; i < argc; i++) {
         int arg_len = strlen(argv[i]);
 
-        if (len + arg_len >= MAX_LEN) {
+        if (len + arg_len + 1 >= MAX_LEN) {
             write(2, "Error: Message too long\n", 24);
             exit(1);
         }
@@ -25,7 +27,7 @@ int main(int argc, char *argv[]) {
             len++;
         }
     }
-    buffer[len] = '\0'; 
+    buffer[len] = '\0';
 
     char *p = buffer;
     while (*p) {
@@ -39,7 +41,7 @@ int main(int argc, char *argv[]) {
             p++;
         }
     }
-    write(1, "\n", 1);
 
+    write(1, "\n", 1);
     exit(0);
 }
