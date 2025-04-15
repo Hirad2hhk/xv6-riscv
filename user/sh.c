@@ -141,7 +141,7 @@ runcmd(struct cmd *cmd)
 int
 getcmd(char *buf, int nbuf)
 {
-  write(2, "$ ", 2);
+  write(2, "Hirad&Sarvenaz$ ", 15);
   memset(buf, 0, nbuf);
   gets(buf, nbuf);
   if(buf[0] == 0) // EOF
