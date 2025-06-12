@@ -143,16 +143,15 @@ syscall(void)
   struct proc *p = myproc();
   struct thread *oldt = p->current_thread;
   uint64 ret;
-
   num = p->trapframe->a7;
-  if(num > 0 && num < NELEM(syscalls) && syscalls[num]) {
-    // Use num to lookup the system call function for num, call it,
-    // and store its return value in p->trapframe->a0
-    p->trapframe->a0 = syscalls[num]();
+  if (num > 0 && num < NELEM(syscalls) && syscalls[num]) {
+  // Use num to lookup the system call function for num, call it,
+  // and store its return value in p->trapframe->a0
+  ret = syscalls[num]();
   } else {
-    printf("%d %s: unknown sys call %d\n",
-            p->pid, p->name, num);
-    p->trapframe->a0 = -1;
+  printf("%d %s: unknown sys call %d\n",
+  p->pid, p->name, num);
+  ret = -1;
   }
   struct thread *newt = p->current_thread;
   if (oldt != newt) {
