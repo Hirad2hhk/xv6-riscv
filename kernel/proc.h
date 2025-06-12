@@ -104,4 +104,23 @@ struct proc {
   struct file *ofile[NOFILE];  // Open files
   struct inode *cwd;           // Current directory
   char name[16];               // Process name (debugging)
+  struct thread threads[NTHREAD]; 
+  struct thread *current_thread; 
 };
+enum threadstate{
+  THREAD_UNUSED,
+  THREAD_RUNNABLE,
+  THREAD_RUNNING,
+  THREAD_JOINED,
+  THREAD_SLEEPING
+};
+
+
+struct thread{
+  enum threadstate state;
+  struct trapframe *trapframe;
+  uint id ;
+  uint join;
+  int sleep_n;
+  uint sleep_tick0;
+}
